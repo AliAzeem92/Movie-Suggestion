@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface MovieCardProps {
+interface MoviePosterProps {
   imageUrl: string;
   movieId: number;
   rating: number;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ imageUrl, movieId, rating }) => {
+const MoviePoster: React.FC<MoviePosterProps> = ({
+  imageUrl,
+  movieId,
+  rating,
+}) => {
   const history = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -44,4 +48,4 @@ const MovieCard: React.FC<MovieCardProps> = ({ imageUrl, movieId, rating }) => {
   );
 };
 
-export default MovieCard;
+export default MoviePoster;

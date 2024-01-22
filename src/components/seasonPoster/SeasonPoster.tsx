@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-interface SeasonCardProps {
+interface SeasonPosterProps {
   imageUrl: string;
   movieId?: number;
   rating: number;
   name: string;
 }
 
-const SeasonCard: React.FC<SeasonCardProps> = ({
+const SeasonPoster: React.FC<SeasonPosterProps> = ({
   imageUrl,
   movieId,
   name,
@@ -46,4 +46,4 @@ const SeasonCard: React.FC<SeasonCardProps> = ({
   );
 };
 
-export default SeasonCard;
+export default SeasonPoster;

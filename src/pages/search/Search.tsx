@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MovieCard from "../../components/moviePoster/MoviePoster";
+import MoviePoster from "../../components/moviePoster/MoviePoster";
 import { useLocation } from "react-router-dom";
 import {
   Searchs,
@@ -60,7 +60,7 @@ const Search = () => {
   return (
     <>
       <Navbar
-        searchPlaceholder={"Search for something specific"}
+        searchPlaceholder={"🔍 Search Movie Or Series"}
         onSearchChange={handleSearchChange}
         showSearchButton={true}
       />
@@ -75,7 +75,7 @@ const Search = () => {
           {searches.length > 0 ? (
             searches.map((search: Searchs) => (
               <div key={search.id} className="col-span-1 md:col-span-1">
-                <MovieCard
+                <MoviePoster
                   imageUrl={search.poster_path}
                   movieId={search.id}
                   rating={search.vote_average}

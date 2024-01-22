@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Icon from "../../assets/icons/icon _bookmark_.png";
-import SeasonCard from "../../components/seasonPoster/SeasonPoster";
+import SeasonPoster from "../../components/seasonPoster/SeasonPoster";
 import { useParams } from "react-router-dom";
 import {
   fetchMovies,
@@ -91,7 +91,7 @@ export default function Movie() {
     <>
       <Navbar
         showSearchButton={true}
-        searchPlaceholder={"Seach Seasons here"}
+        searchPlaceholder={"🔍 Search Movie Or Series"}
         onSearchChange={function (query: string): void {
           throw new Error("Function not implemented.");
         }}
@@ -190,7 +190,7 @@ export default function Movie() {
         <div className="grid md:grid-cols-6 grid-cols-2 ml-[20px] ">
           {seasons.slice(0, 18).map((season) => (
             <div key={season.id}>
-              <SeasonCard
+              <SeasonPoster
                 imageUrl={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
                 movieId={season.id}
                 rating={season.vote_average}
