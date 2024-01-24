@@ -47,15 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav>
       <div className="container flex items-center justify-between">
-        <div
-          className="text-black font-caros-bold text-[35px] w-[600] font-semibold ml-[20px] mt-[47px] "
-          // style={{
-          //   fontFamily: "FONTSPRING DEMO - Caros Bold",
-          //   fontSize: "35px",
-          //   fontWeight: 600,
-          //   lineHeight: "30px",
-          // }}
-        >
+        <div className="text-black font-caros-bold text-[35px] w-[600] font-semibold ml-[20px] mt-[47px] ">
           <Link to="/">
             The <br />
             Movie <br />

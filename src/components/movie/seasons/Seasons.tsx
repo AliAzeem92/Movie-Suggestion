@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MovieDetail from "../../components/movie/movieDetail/MovieDetail";
-import Seasons from "../../components/movie/seasons/Seasons";
+import Icon from "../../../assets/icons/icon _bookmark_.png";
+import SeasonPoster from "../../../components/seasonPoster/SeasonPoster";
 import { useParams } from "react-router-dom";
 import {
   fetchMovies,
   selectAllMovies,
   selectIsLoading,
-} from "../../redux/MovieSlice";
-import { fetchSeries, selectAllSeasons } from "../../redux/SeasonsSlice";
-import { selectAllSearch } from "../../redux/SearchSlice";
-import Navbar from "../../components/navbar/Navbar";
+} from "../../../redux/MovieSlice";
+import { fetchSeries, selectAllSeasons } from "../../../redux/SeasonsSlice";
+import { selectAllSearch } from "../../../redux/SearchSlice";
+import Navbar from "../../../components/navbar/Navbar";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "../../redux/Store";
+import { RootState } from "../../../redux/Store";
 
-export default function Movie() {
+export default function Seasons() {
   const { movieId } = useParams();
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -89,18 +89,37 @@ export default function Movie() {
 
   return (
     <>
-      <Navbar
-        showSearchButton={true}
-        searchPlaceholder={"🔍 Search Movie Or Series"}
-        onSearchChange={function (query: string): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      {/* Movie Detail */}
-      <div className="container p-4 ">
-        <MovieDetail />
+      <div className="container mt-96  md:my-2  mx-auto py-4">
+        <div className="grid grid-cols-2 gap-4 mb-[30px] ">
+          <div className="flex flex-row gap-4">
+            <h1 className="ml-[20px] font-bold text-4xl leading-9 ">Seasons</h1>
+            <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-[10px] p-2  bg-[#D9D9D9] text-black">
+              1
+            </span>
+            <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-[10px] p-2  bg-[#D9D9D9] text-black">
+              2
+            </span>
+            <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-[10px] p-2  bg-[#D9D9D9] text-black">
+              3
+            </span>
+            <span className="cursor-pointer  hover:bg-[#D2D2D2] flex flex-row rounded-[10px] p-2  bg-[#D9D9D9] text-black">
+              4
+            </span>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-6 grid-cols-2 ml-[20px] ">
+          {seasons.slice(0, 18).map((season) => (
+            <div key={season.id}>
+              <SeasonPoster
+                imageUrl={`https://image.tmdb.org/t/p/w500${season.poster_path}`}
+                movieId={season.id}
+                rating={season.vote_average}
+                name={season.name}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <Seasons />
     </>
   );
 }
