@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MoviePoster from "../../components/moviePoster/MoviePoster";
+import MoviePoster from "../../components/posters/moviePoster/MoviePoster";
 import { useLocation } from "react-router-dom";
 import {
   Searchs,
   searchMovies,
   selectAllSearch,
   selectIsLoading,
-} from "../../redux/SearchSlice";
+} from "../../redux/slice/SearchSlice";
 import Navbar from "../../components/navbar/Navbar";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/Store";

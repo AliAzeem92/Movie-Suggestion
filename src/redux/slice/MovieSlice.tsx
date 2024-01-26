@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../helper/Instance";
+import instance from "../../helper/Instance";
 
 export interface Movie {
- id: number;
-    vote_average: number;
-    poster_path: string;
-    name: string;
-    original_title: string;
-    backdrop_path: string;
-    overview: string;
+  id: number;
+  vote_average: number;
+  poster_path: string;
+  name: string;
+  original_title: string;
+  backdrop_path: string;
+  overview: string;
 }
 
 interface MovieState {
