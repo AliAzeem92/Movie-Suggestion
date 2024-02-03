@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 interface NavbarProps {
-  searchPlaceholder: string;
+  searchPlaceholder?: string;
   onSearchChange: (query: string) => void;
   showSearchButton?: boolean;
   showPlusButton?: boolean;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
-  searchPlaceholder,
+  searchPlaceholder = "🔍 Search Movie or Series",
   onSearchChange,
   showSearchButton,
   showPlusButton,
@@ -17,31 +17,26 @@ const Navbar: React.FC<NavbarProps> = ({
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const decodedQuery = decodeURIComponent(location.search.slice(7));
+    setSearchQuery(decodedQuery);
+  }, [location.search]);
 
   const toggleSearch = () => {
     setIsSearchVisible((prev) => !prev);
   };
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const currentPathname = window.location.pathname;
-    const shouldNavigate = currentPathname !== "/search";
-
-    if (shouldNavigate) {
-      const encodedQuery = encodeURIComponent(searchQuery);
-      navigate(`/search?query=${encodedQuery}`);
-      setSearchQuery(encodedQuery);
-      setSearchQuery(searchQuery);
-    } else {
-      const encodedQuery = encodeURIComponent(searchQuery);
-      navigate(`/search?query=${encodedQuery}`);
-      setSearchQuery(encodedQuery);
-      onSearchChange(searchQuery);
-      setSearchQuery(searchQuery);
-    }
+    const encodedQuery = encodeURIComponent(searchQuery);
+    navigate(`/search?query=${encodedQuery}`);
+    onSearchChange(searchQuery);
   };
 
   return (
@@ -57,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="flex-grow flex items-center justify-center sm:hidden">
           {showSearchButton && (
             <button
-              className="text-white focus:outline-none "
+              className="text-white focus:outline-none"
               onClick={toggleSearch}
             >
               🔍
@@ -76,33 +71,18 @@ const Navbar: React.FC<NavbarProps> = ({
             </button>
           )}
         </div>
-        <div
-          className={`flex-grow  items-center justify-center sm:flex hidden`}
-        >
+        <div className={`flex-grow items-center justify-center sm:flex hidden ${isSearchVisible ? '' : 'hidden'}`}>
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
               placeholder={searchPlaceholder}
               value={searchQuery}
               onChange={handleSearchChange}
-              className="px-4 py-2 rounded-[300px] focus:outline-none text-center bg-[#D9D9D9] rounded-[300px] focus:ring focus:border-blue-300 sm:w-full md:w-96 lg:w-[40rem]"
+              className="px-4 py-2 rounded-[300px] focus:outline-none text-center bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 sm:w-full md:w-96 lg:w-[40rem]"
             />
           </form>
         </div>
       </div>
-      {isSearchVisible && (
-        <div className="container mx-auto my-5 sm:hidden  flex items-center justify-center transition-all duration-2000 ease-in-out">
-          <form onSubmit={handleSearchSubmit}>
-            <input
-              type="text"
-              placeholder={searchPlaceholder}
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="px-4 py-2 rounded-[300px] bg-[#D9D9D9] rounded-[300px] focus:outline-none focus:ring focus:border-blue-300 sm:w-full md:w-96 lg:w-[40rem] responsive-search-input"
-            />
-          </form>
-        </div>
-      )}
     </nav>
   );
 };

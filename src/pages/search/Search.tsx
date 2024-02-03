@@ -8,7 +8,6 @@ import {
   selectAllSearch,
   selectIsLoading,
 } from "../../redux/slice/SearchSlice";
-import Navbar from "../../components/navbar/Navbar";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/Store";
 
@@ -59,12 +58,6 @@ const Search = () => {
   };
   return (
     <>
-      <Navbar
-        searchPlaceholder={"🔍 Search Movie Or Series"}
-        onSearchChange={handleSearchChange}
-        showSearchButton={true}
-      />
-
       <div className="container mx-auto p-4 ">
         <div className="grid grid-cols-1 w-full mt-[45px] mb-[34px] ">
           <h1 className="font-bold">
