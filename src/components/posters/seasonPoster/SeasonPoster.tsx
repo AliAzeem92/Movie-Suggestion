@@ -24,8 +24,8 @@ const SeasonPoster: React.FC<SeasonPosterProps> = ({
       >
         <img
           src={`https://image.tmdb.org/t/p/original/${imageUrl}`}
-          alt="Movie Poster"
-          className="rounded-[20px] shrink-0 w-[177px] h-[263px]"
+          alt="Season Poster"
+          className="rounded-[20px] shrink-0 w-[305px] h-[202px] "
         />
 
         <div

@@ -83,13 +83,13 @@ export default function Detail() {
             <div className="grid md:grid-cols-2 sm:grid-cols-1  z-10 md:static absolute gap-5">
               <div className="md-[37px] sm:w-full w-[100px] flex justify-center relative md:top-0 mt-[8px] ml-[30px] top-16 ">
                 <img
-                  className="sm:w-[98px] sm:h-[146px] lg:w-[296px] lg:h-[391px] md:w-full lg:w-[196px]  rounded-[2rem]"
+                  className="sm:w-[98px] sm:h-[146px] lg:w-[196px] lg:h-[291px] md:w-full lg:w-[196px]  rounded-[20px]"
                   src={`https://image.tmdb.org/t/p/original/${movieData.poster_path}`}
                   alt="Movie Poster"
                 />
               </div>
 
-              <div className="me-2 w-[500] my-5 ps-0 relative md:top-0 md:left-0 top-16 left-1">
+              <div className=" w-[500] my-5 relative md:top-0 md:left-0 top-16 left-1">
                 <span className="rounded-full border-2 border-black border-solid px-3 py-1 me-2 ">
                   Action
                 </span>
@@ -106,13 +106,14 @@ export default function Detail() {
                 <span>/10</span>
               </div>
             </div>
-            <div className="grid grid-cols-1 w-full md:static relative ">
+            <div className="grid grid-cols-1 md:static relative ">
               <div className="mx-4 ">
                 <img
-                  className="rounded-[20px] ml-[-10px] "
+                  // className="rounded-[20px] ml-[-10px] "
+                  className="sm:w-[98px] sm:h-[146px] lg:w-[521px] lg:h-[291px] md:w-full rounded-[20px]"
                   src={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
-                  width="700"
-                  height="500"
+                  // width="700"
+                  // height="500"
                 />
               </div>
             </div>
