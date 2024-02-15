@@ -9,7 +9,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({
-  searchPlaceholder = "🔍 Search Movie or Series",
+  searchPlaceholder = "🔍 Search a movies or a series",
   onSearchChange,
   showSearchButton,
   showPlusButton,
@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({
   }, [location.search]);
 
   const toggleSearch = () => {
-    setIsSearchVisible((prev) => !prev);
+    setIsSearchVisible(prev => !prev);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <nav>
       <div className="container flex items-center justify-between">
-        <div className="text-black font-caros-bold text-[35px] w-[600] font-semibold ml-[20px] mt-[47px] ">
+        <div className="text-caros font-semibold text-[35px] w-[600] ml-[20px] mt-[47px] ">
           <Link to="/">
             The <br />
             Movie <br />
@@ -54,31 +54,33 @@ const Navbar: React.FC<NavbarProps> = ({
             <button
               className="text-white focus:outline-none"
               onClick={toggleSearch}
+              aria-label="Toggle Search"
             >
-              🔍
             </button>
           )}
           {showPlusButton && (
             <button
               className="text-black ms-1 focus:outline-none"
               style={{
-                fontFamily: "Rounded Mplus 1c Bold",
+                fontFamily: "Caros-Bold",
                 fontSize: "30px",
                 fontWeight: 700,
               }}
+              aria-label="Add New Item"
             >
               +
             </button>
           )}
         </div>
-        <div className={`flex-grow items-center justify-center sm:flex hidden ${isSearchVisible ? '' : 'hidden'}`}>
+        <div className={`flex-grow items-center justify-center sm:flex ${isSearchVisible ? '' : 'hidden'}`}>
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
               placeholder={searchPlaceholder}
               value={searchQuery}
               onChange={handleSearchChange}
-              className="px-4 py-2 rounded-[300px] focus:outline-none text-center bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 sm:w-full md:w-96 lg:w-[40rem]"
+              className="px-4 py-2 rounded-[300px] focus:outline-none text-center bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 w-[600px]" // Adjust width here
+              style={{ fontFamily: "Caros-Bold" }}
             />
           </form>
         </div>

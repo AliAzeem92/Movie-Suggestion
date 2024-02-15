@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MoviePoster from "../../components/posters/moviePoster/MoviePoster";
 import { useLocation } from "react-router-dom";
+import MoviePoster from "../../components/posters/moviePoster/MoviePoster";
 import {
   Searchs,
   searchMovies,
@@ -91,6 +91,7 @@ const Search = () => {
 };
 
 export default Search;
+
 function searchMoviesFulfilled(
   data:
     | import("@reduxjs/toolkit").PayloadAction<

@@ -22,7 +22,6 @@ const MoviePoster: React.FC<MoviePosterProps> = ({
   return (
     <div
       className="relative rounded-md cursor-pointer overflow-hidden transition-transform transform-gpu hover:scale-105"
-      style={{ animationDuration: "0ms" }}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -39,7 +38,6 @@ const MoviePoster: React.FC<MoviePosterProps> = ({
       >
         <span
           className="text-white font-FONTSPRING-DEMO-Caros-Bold text-15px font-bold leading-9 letter-spacing-0"
-          style={{ textAlign: "left" }}
         >
           ⭐ {Math.round(rating)}
         </span>

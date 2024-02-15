@@ -1,7 +1,7 @@
 import react from 'react'
 import PopularMovies from "../../components/home/popularMovies/PopularMovies";
 import Trending from "../../components/home/trending/Trending";
-import PopularReleased from "../../components/home/popularReleased/PopularReleased";
+import PopularReleases from "../../components/home/popularReleases/PopularReleases";
 
 export default function Home() {
 
@@ -11,10 +11,7 @@ export default function Home() {
         <PopularMovies />
         <Trending />
       </div>
-
-
-
-      <PopularReleased />
+      <PopularReleases />
     </div>
   );
 }
