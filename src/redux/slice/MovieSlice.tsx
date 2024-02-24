@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../../helper/Instance";
+import instance from "../../utils/Instance";
 
 export interface Movie {
   id: number;

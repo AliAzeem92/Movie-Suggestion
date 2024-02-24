@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import instance from "../../helper/Instance";
+import instance from "../../utils/Instance";
 import { Movie } from "./MovieSlice";
 
 export interface Searchs extends Movie {

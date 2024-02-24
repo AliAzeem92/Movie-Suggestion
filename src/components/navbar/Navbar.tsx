@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({
   }, [location.search]);
 
   const toggleSearch = () => {
-    setIsSearchVisible(prev => !prev);
+    setIsSearchVisible((prev) => !prev);
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,31 +56,26 @@ const Navbar: React.FC<NavbarProps> = ({
               onClick={toggleSearch}
               aria-label="Toggle Search"
             >
+              Search
             </button>
           )}
           {showPlusButton && (
             <button
-              className="text-black ms-1 focus:outline-none"
-              style={{
-                fontFamily: "Caros-Bold",
-                fontSize: "30px",
-                fontWeight: 700,
-              }}
+              className="text-black ms-1 focus:outline-none font-family:Caros-Bold text-[30px] font-bold"
               aria-label="Add New Item"
             >
               +
             </button>
           )}
         </div>
-        <div className={`flex-grow items-center justify-center sm:flex ${isSearchVisible ? '' : 'hidden'}`}>
+        <div className={`flex-grow items-center justify-center sm:flex ${isSearchVisible ? "" : "hidden"}`}>
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
               placeholder={searchPlaceholder}
               value={searchQuery}
               onChange={handleSearchChange}
-              className="px-4 py-2 rounded-[300px] focus:outline-none text-center bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 w-[600px]" // Adjust width here
-              style={{ fontFamily: "Caros-Bold" }}
+              className="px-4 py-2 rounded-[300px] focus:outline-none text-center font-family:Caros-Bold bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 w-[600px]"
             />
           </form>
         </div>

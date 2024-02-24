@@ -7,7 +7,6 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 export default function Trending() {
     const dispatch: ThunkDispatch<any, any, any> = useDispatch();
     const movies: Movie[] = useSelector(selectAllMovies);
-    const isLoading = useSelector(selectIsLoading);
 
     useEffect(() => {
         dispatch(fetchMovies());

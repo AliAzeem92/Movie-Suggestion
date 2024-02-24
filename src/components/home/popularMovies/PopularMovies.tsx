@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MoviePoster from "../../../components/posters/moviePoster/MoviePoster";
 import { Movie, fetchMovies, selectAllMovies, selectIsLoading } from "../../../redux/slice/MovieSlice";
-import { searchMovies } from "../../../redux/slice/SearchSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { AnyAction } from "redux";
 import { RootState } from "../../../redux/Store";
@@ -11,16 +10,10 @@ export default function PopularMovies() {
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     const movies: Movie[] = useSelector(selectAllMovies);
     const isLoading = useSelector(selectIsLoading);
-    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         dispatch(fetchMovies());
     }, [dispatch]);
-
-    const handleSearchChange = (query: string) => {
-        setSearchQuery(query);
-        dispatch(searchMovies(query));
-    };
 
     return (
         <div className="col-span-12 sm:col-span-4 md:me-5">

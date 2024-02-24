@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Icon from "../../../assets/icons/icon _bookmark_.png";
+import Icon from "../../../assets/icons/Bookmark.png";
 import { useParams } from "react-router-dom";
 import {
   fetchMovies,
@@ -9,6 +9,7 @@ import {
 } from "../../../redux/slice/MovieSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../../redux/Store";
+import Loader from "../../../components/loader/Loader";
 
 export default function Detail() {
   const { movieId } = useParams();
@@ -27,11 +28,11 @@ export default function Detail() {
     overview: string;
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const matchedMovie = movies.find(
       (movie) => movie.id.toString() === movieId
     );
@@ -40,6 +41,10 @@ export default function Detail() {
       setMovieData(matchedMovie);
     }
   }, [movies, movieId]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (movieData === null) {
     return <div>Id Data Not Found</div>;
@@ -52,7 +57,6 @@ export default function Detail() {
           {movieData ? (
             <div className="col-span sm:w-full">
               <p className="font-bold text-4xl mt-[43px] ">
-                {" "}
                 {movieData.original_title}
               </p>
             </div>
@@ -80,25 +84,28 @@ export default function Detail() {
         <div className="container mx-auto py-4">
           <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-3 flex flex-col ">
             <div className="grid md:grid-cols-2 sm:grid-cols-1  z-10 md:static absolute gap-5">
-              <div className="md-[37px] sm:w-full w-[100px] flex justify-center relative md:top-0 mt-[8px] ml-[30px] top-16 ">
+              <div className="md:w-[196px] w-[98px] relative md:top-0 md:left-0 top-[55px] left-8">
                 <img
-                  className="sm:w-[98px] sm:h-[146px] lg:w-[196px] lg:h-[291px] md:w-full lg:w-[196px]  rounded-[20px]"
+                  className="lg:w-[196px] lg:h-[291px] sm:w-[98px] sm:h-[146px] md:w-[196px] md:h-[98px] rounded-[20px]"
                   src={`https://image.tmdb.org/t/p/original/${movieData.poster_path}`}
                   alt="Movie Poster"
                 />
               </div>
-
-              <div className=" w-[500] my-5 relative md:top-0 md:left-0 top-16 left-1">
-                <span className="rounded-full border-2 border-black border-solid px-3 py-1 me-2 ">
+              <div className="w-[500] my-1 relative md:top-0 md:left-0 top-16 ">
+               <div className="flex flex-row text-[18px] justify-start  content-center text-center ">
+                <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]  py-1.5 me-2.5">
                   Action
                 </span>
-                <span className="rounded-full border-2 border-black border-solid px-3 py-1 ms-2">
-                  Sci Fiction
+                <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]   py-[5px] ms-2.5">
+                  Sci-Fr
                 </span>
-                <p className="color-black font-bold text-l mt-4 mb-10">
+               </div>
+                <p className="font-medium text-[18px] text-wrap w-auto mt-[19px] ">
                   {movieData.overview.slice(0, 300)}
                 </p>
-                <h3>IMDB Rating</h3>
+                <h3 className="text-[18px] font-normal font-roboto">
+                IBM Rating
+               </h3>
                 <span className="text-xl">
                   ⭐{Math.round(movieData.vote_average)}
                 </span>{" "}
@@ -110,6 +117,7 @@ export default function Detail() {
                 <img
                   className="sm:w-[98px] sm:h-[146px] lg:w-[521px] lg:h-[291px] md:w-full rounded-[20px]"
                   src={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
+                  alt="Movie Scene"
                 />
               </div>
             </div>
@@ -119,112 +127,3 @@ export default function Detail() {
     </>
   );
 }
-
-
-// import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import Icon from "../../../assets/icons/icon _bookmark_.png";
-// import { useParams } from "react-router-dom";
-// import {
-//   fetchMovies,
-//   selectAllMovies,
-//   selectIsLoading,
-// } from "../../../redux/slice/MovieSlice";
-// import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-// import { RootState } from "../../../redux/Store";
-
-// export default function Detail() {
-//   const { movieId } = useParams();
-//   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-//   const isLoading = useSelector(selectIsLoading);
-//   const movies: Movie[] = useSelector(selectAllMovies);
-//   const [movieData, setMovieData] = React.useState<Movie | null>(null);
-
-//   interface Movie {
-//     id: number;
-//     vote_average: number;
-//     poster_path: string;
-//     name: string;
-//     original_title: string;
-//     backdrop_path: string;
-//     overview: string;
-//   }
-
-//   React.useEffect(() => {
-//     dispatch(fetchMovies());
-//   }, [dispatch]);
-
-//   React.useEffect(() => {
-//     const matchedMovie = movies.find(
-//       (movie) => movie.id.toString() === movieId
-//     );
-
-//     if (matchedMovie) {
-//       setMovieData(matchedMovie);
-//     }
-//   }, [movies, movieId]);
-
-//   if (movieData === null) {
-//     return <div>Id Data Not Found</div>;
-//   }
-
-//   return (
-//     <>
-//       <div className="container p-4">
-//         <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
-//           {movieData ? (
-//             <div className="col-span">
-//               <p className="font-bold text-4xl mt-5">{movieData.original_title}</p>
-//             </div>
-//           ) : (
-//             <div className="col-span font-bold text-4xl leading-9">
-//               Movie not found
-//             </div>
-//           )}
-
-//           <div className="col-span flex justify-end p-2 sm:flex hidden">
-//             <button
-//               className="bg-gray-300 hover:bg-gray-400 flex rounded-full p-4 cursor-pointer text-black"
-//               disabled={isLoading}
-//             >
-//               <img src={Icon} alt="Add to watchlist" className="mx-2" />
-//               <span>Add to watchlist</span>
-//             </button>
-//           </div>
-//         </div>
-//         {/* description */}
-//         <div className="container mx-auto py-4">
-//           <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-3 flex flex-col justify-between">
-//             <div className="grid md:grid-cols-2 sm:grid-cols-1 z-10 md:static absolute gap-5">
-//               <div className="sm:w-[98px] sm:h-[146px] lg:w-[196px] lg:h-[291px] md:w-full lg:w-[196px]  rounded-[20px]">
-//                 <img
-//                   className="rounded-lg"
-//                   src={`https://image.tmdb.org/t/p/original/${movieData.poster_path}`}
-//                   alt="Movie Poster"
-//                 />
-//               </div>
-
-//               <div>
-//                 <span className="rounded-full border-2 border-black border-solid px-3 py-1 me-2">Action</span>
-//                 <span className="rounded-full border-2 border-black border-solid px-3 py-1 ms-2">Sci Fiction</span>
-//                 <p className="color-black font-bold text-l mt-4 mb-10">{movieData.overview.slice(0, 300)}</p>
-//                 <h3>IMDB Rating</h3>
-//                 <span className="text-xl">⭐{Math.round(movieData.vote_average)}</span>
-//                 <span>/10</span>
-//               </div>
-//             </div>
-//             <div className="grid grid-cols-1 md:static relative">
-//               <div className="mx-4">
-//                 <img
-//                   className="rounded-lg"
-//                   src={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
-//                   alt="Movie Scene"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
