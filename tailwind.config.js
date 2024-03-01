@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'caros': ['"Caros-Bold"', 'sans-serif'],
+        caros: ["Caros-Bold", "sans-serif"],
       },
     },
   },

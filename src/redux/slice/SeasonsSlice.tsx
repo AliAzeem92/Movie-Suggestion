@@ -12,7 +12,7 @@ export const fetchSeries = createAsyncThunk("series/fetchSeries", async () => {
     const response = await instance.get("tv/popular?language=en-US&page=1");
     return response.data.results;
   } catch (error) {
-    throw error;
+    throw new Error("Failed to fetch series. Please try again later.");
   }
 });
 
@@ -35,13 +35,16 @@ const seasonSlice = createSlice({
       })
       .addCase(fetchSeries.rejected, (state, action) => {
         state.status = "failed";
-        state.error = (action.error.message ?? null) as string | null;
+        state.error = action.error.message ?? "Unknown error occurred.";
       });
   },
 });
+
 export const selectAllSeasons = (state: { seasons: SeasonState }) =>
   state.seasons.seasons;
 export const selectIsLoading = (state: { seasons: SeasonState }) =>
   state.seasons.status === "loading";
+
 export const { reducer: seasonsReducer } = seasonSlice;
+
 export default seasonSlice;

@@ -82,7 +82,7 @@ export default function Detail() {
         </div>
         {/* description */}
         <div className="container mx-auto py-4">
-          <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-3 flex flex-col ">
+          <div className="grid lg:grid-cols-2 sm:grid-cols-1 gap-3 ">
             <div className="grid md:grid-cols-2 sm:grid-cols-1  z-10 md:static absolute gap-5">
               <div className="md:w-[196px] w-[98px] relative md:top-0 md:left-0 top-[55px] left-8">
                 <img
@@ -92,20 +92,20 @@ export default function Detail() {
                 />
               </div>
               <div className="w-[500] my-1 relative md:top-0 md:left-0 top-16 ">
-               <div className="flex flex-row text-[18px] justify-start  content-center text-center ">
-                <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]  py-1.5 me-2.5">
-                  Action
-                </span>
-                <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]   py-[5px] ms-2.5">
-                  Sci-Fr
-                </span>
-               </div>
+                <div className="flex flex-row text-[18px] justify-start  content-center text-center ">
+                  <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]  py-1.5 me-2.5">
+                    Action
+                  </span>
+                  <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]   py-[5px] ms-2.5">
+                    Sci-Fr
+                  </span>
+                </div>
                 <p className="font-medium text-[18px] text-wrap w-auto mt-[19px] ">
                   {movieData.overview.slice(0, 300)}
                 </p>
                 <h3 className="text-[18px] font-normal font-roboto">
-                IBM Rating
-               </h3>
+                  IMDB Rating
+                </h3>
                 <span className="text-xl">
                   ⭐{Math.round(movieData.vote_average)}
                 </span>{" "}

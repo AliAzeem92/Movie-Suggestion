@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MovieDetail from "../../components/movie/movieDetail/MovieDetail";
 import Seasons from "../../components/movie/seasons/Seasons";
 import Loader from "../../components/loader/Loader";

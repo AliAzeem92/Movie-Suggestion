@@ -22,7 +22,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
     const response = await instance.get("trending/movie/day?language=en-US");
     return response.data.results;
   } catch (error) {
-    throw error;
+    throw new Error("Failed to fetch movies. Please try again later.");
   }
 });
 
@@ -45,7 +45,7 @@ const moviesSlice = createSlice({
       })
       .addCase(fetchMovies.rejected, (state, action) => {
         state.status = "failed";
-        state.error = (action.error.message ?? null) as string | null;
+        state.error = action.error.message ?? "Unknown error occurred.";
       });
   },
 });

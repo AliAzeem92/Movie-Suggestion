@@ -9,7 +9,6 @@ interface SeasonPosterProps {
 
 const SeasonPoster: React.FC<SeasonPosterProps> = ({
   imageUrl,
-  movieId,
   name,
   rating,
 }) => {
@@ -17,8 +16,7 @@ const SeasonPoster: React.FC<SeasonPosterProps> = ({
   return (
     <>
       <div
-        className="relative rounded-tl-lg rounded-tr-lg cursor-pointer overflow-hidden transition-transform transform-gpu mb-5 hover:scale-105"
-        style={{ animationDuration: "0ms" }}
+        className="relative rounded-tl-lg rounded-tr-lg cursor-pointer overflow-hidden transition-transform transform-gpu duration-0 mb-5 hover:scale-105"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -33,10 +31,7 @@ const SeasonPoster: React.FC<SeasonPosterProps> = ({
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         >
-          <span
-            className="text-white font-FONTSPRING-DEMO-Caros-Bold text-15px font-bold leading-9 letter-spacing-0"
-            style={{ textAlign: "left" }}
-          >
+          <span className="text-white font-FONTSPRING-DEMO-Caros-Bold text-15px font-bold leading-9 letter-spacing-0 text-left ">
             ⭐ {Math.round(rating)}
           </span>
         </div>

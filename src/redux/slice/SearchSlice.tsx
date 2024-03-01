@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import instance from "../../utils/Instance";
 import { Movie } from "./MovieSlice";
 
-export interface Searchs extends Movie {
+export interface SearchMovie extends Movie {
   id: number;
   poster_path: string;
   vote_average: number;
 }
 
 export interface SearchState {
-  movies: Searchs[];
+  movies: SearchMovie[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -23,7 +23,7 @@ export const searchMovies = createAsyncThunk(
       );
       return response.data.results;
     } catch (error) {
-      throw error;
+      throw new Error("Failed to search movies. Please try again later.");
     }
   }
 );
@@ -36,7 +36,7 @@ const searchSlice = createSlice({
     error: null,
   } as SearchState,
   reducers: {
-    setSearches: (state, action: PayloadAction<Searchs[]>) => {
+    setSearches: (state, action: PayloadAction<SearchMovie[]>) => {
       state.movies = action.payload;
       state.status = "succeeded";
     },
@@ -52,7 +52,7 @@ const searchSlice = createSlice({
       })
       .addCase(searchMovies.rejected, (state, action) => {
         state.status = "failed";
-        state.error = (action.error.message ?? null) as string | null;
+        state.error = action.error.message ?? "Unknown error occurred.";
       });
   },
 });

@@ -68,14 +68,18 @@ const Navbar: React.FC<NavbarProps> = ({
             </button>
           )}
         </div>
-        <div className={`flex-grow items-center justify-center sm:flex ${isSearchVisible ? "" : "hidden"}`}>
+        <div
+          className={`flex-grow items-center justify-center sm:flex ${
+            isSearchVisible ? "" : "hidden"
+          }`}
+        >
           <form onSubmit={handleSearchSubmit}>
             <input
               type="text"
               placeholder={searchPlaceholder}
               value={searchQuery}
               onChange={handleSearchChange}
-              className="px-4 py-2 rounded-[300px] focus:outline-none text-center font-family:Caros-Bold bg-[#D9D9D9] rounded-[400px] focus:ring focus:border-blue-100 w-[600px]"
+              className="px-4 py-2 rounded-[300px] focus:outline-none text-center font-family:Caros-Bold bg-gray-300 rounded-full focus:ring focus:border-blue-100 w-[600px]"
             />
           </form>
         </div>

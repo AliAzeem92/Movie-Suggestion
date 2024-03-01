@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import MoviePoster from "../../components/posters/moviePoster/MoviePoster";
-import { searchMovies, selectAllSearch, selectIsLoading } from "../../redux/slice/SearchSlice";
+import {
+  searchMovies,
+  selectAllSearch,
+  selectIsLoading,
+} from "../../redux/slice/SearchSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/Store";
 import Loader from "../../components/loader/Loader";
@@ -10,16 +14,9 @@ import Loader from "../../components/loader/Loader";
 const Search = () => {
   const dispatch: ThunkDispatch<RootState, any, any> = useDispatch();
   const searches = useSelector(selectAllSearch) || [];
-  const [searchQuery, setSearchQuery] = useState("");
   const isLoading = useSelector(selectIsLoading);
   const [query, setQuery] = useState("");
   const location = useLocation();
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const newQuery = searchParams.get("query") || "";
-    setQuery(newQuery);
-  }, [location.search]);
 
   useEffect(() => {
     if (query) {
@@ -29,13 +26,11 @@ const Search = () => {
     }
   }, [dispatch, query]);
 
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query);
-    setQuery(query);
-    dispatch(searchMovies(query)).catch((error: any) => {
-      console.error("Error in searchMovies dispatch:", error);
-    });
-  };
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const newQuery = searchParams.get("query") || "";
+    setQuery(newQuery);
+  }, [location.search]);
 
   return (
     <>
