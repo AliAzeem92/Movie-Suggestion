@@ -6,10 +6,11 @@ import {
   fetchMovies,
   selectAllMovies,
   selectIsLoading,
-} from "../../../redux/slice/MovieSlice";
+} from "../../../redux/slice/movieSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "../../../redux/Store";
+import { RootState } from "../../../redux/store";
 import Loader from "../../../components/loader/Loader";
+import { Movie } from "../../../types/types";
 
 export default function Detail() {
   const { movieId } = useParams();
@@ -17,16 +18,6 @@ export default function Detail() {
   const isLoading = useSelector(selectIsLoading);
   const movies: Movie[] = useSelector(selectAllMovies);
   const [movieData, setMovieData] = React.useState<Movie | null>(null);
-
-  interface Movie {
-    id: number;
-    vote_average: number;
-    poster_path: string;
-    name: string;
-    original_title: string;
-    backdrop_path: string;
-    overview: string;
-  }
 
   useEffect(() => {
     dispatch(fetchMovies());

@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-interface MoviePosterProps {
-  imageUrl: string;
-  movieId: number;
-  rating: number;
-}
+import { MoviePosterProps } from "../../../types/types";
 
 const MoviePoster: React.FC<MoviePosterProps> = ({
   imageUrl,
@@ -36,9 +31,7 @@ const MoviePoster: React.FC<MoviePosterProps> = ({
           isHovered ? "opacity-100" : "opacity-0"
         }`}
       >
-        <span
-          className="text-white font-FONTSPRING-DEMO-Caros-Bold text-15px font-bold leading-9 letter-spacing-0"
-        >
+        <span className="text-white font-FONTSPRING-DEMO-Caros-Bold text-15px font-bold leading-9 letter-spacing-0">
           ⭐ {Math.round(rating)}
         </span>
       </div>

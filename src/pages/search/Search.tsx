@@ -6,9 +6,9 @@ import {
   searchMovies,
   selectAllSearch,
   selectIsLoading,
-} from "../../redux/slice/SearchSlice";
+} from "../../redux/slice/searchSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "../../redux/Store";
+import { RootState } from "../../redux/store";
 import Loader from "../../components/loader/Loader";
 
 const Search = () => {

@@ -1,14 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MoviePoster from "../../../components/posters/moviePoster/MoviePoster";
-import {
-  Movie,
-  fetchMovies,
-  selectAllMovies,
-} from "../../../redux/slice/MovieSlice";
+import { fetchMovies, selectAllMovies } from "../../../redux/slice/movieSlice";
+import { Movie } from "../../../types/types";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { AnyAction } from "redux";
-import { RootState } from "../../../redux/Store";
+import { RootState } from "../../../redux/store";
 
 export default function PopularMovies() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();

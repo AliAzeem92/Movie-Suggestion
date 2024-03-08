@@ -4,11 +4,11 @@ import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
 import Movie from "./pages/movies/Movie";
 import { useDispatch } from "react-redux";
-import { searchMovies } from "./redux/slice/SearchSlice";
+import { searchMovies } from "./redux/slice/searchSlice";
 import Navbar from "./components/navbar/Navbar";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { AnyAction } from "redux";
-import { RootState } from "./redux/Store";
+import { RootState } from "./redux/store";
 
 function App() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();

@@ -1,11 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../../utils/Instance";
-
-interface SeasonState {
-  seasons: [];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-}
+import instance from "../../utils/instance";
+import { SeasonState } from "../../types/types";
 
 export const fetchSeries = createAsyncThunk("series/fetchSeries", async () => {
   try {

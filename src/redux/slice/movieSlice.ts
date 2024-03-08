@@ -1,21 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import instance from "../../utils/Instance";
-
-export interface Movie {
-  id: number;
-  vote_average: number;
-  poster_path: string;
-  name: string;
-  original_title: string;
-  backdrop_path: string;
-  overview: string;
-}
-
-interface MovieState {
-  movies: Movie[];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-}
+import instance from "../../utils/instance";
+import { MovieState } from "../../types/types";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   try {

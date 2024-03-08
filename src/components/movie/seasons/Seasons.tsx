@@ -1,23 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SeasonPoster from "../../../components/posters/seasonPoster/SeasonPoster";
-import { fetchSeries, selectAllSeasons } from "../../../redux/slice/SeasonsSlice";
+import {
+  fetchSeries,
+  selectAllSeasons,
+} from "../../../redux/slice/seasonsSlice";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { RootState } from "../../../redux/Store";
+import { RootState } from "../../../redux/store";
+import { Season } from "../../../types/types";
 
 export default function Seasons() {
   const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
   const seasons: Season[] = useSelector(selectAllSeasons);
-
-  interface Season {
-    id: number;
-    vote_average: number;
-    poster_path: string;
-    name: string;
-    original_title: string;
-    backdrop_path: string;
-    overview: string;
-  }
 
   useEffect(() => {
     dispatch(fetchSeries());

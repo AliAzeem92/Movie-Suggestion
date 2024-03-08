@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-
-interface SeasonPosterProps {
-  imageUrl: string;
-  movieId?: number;
-  rating: number;
-  name: string;
-}
+import { SeasonPosterProps } from "../../../types/types";
 
 const SeasonPoster: React.FC<SeasonPosterProps> = ({
   imageUrl,

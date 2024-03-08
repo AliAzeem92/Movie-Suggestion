@@ -1,18 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import instance from "../../utils/Instance";
-import { Movie } from "./MovieSlice";
-
-export interface SearchMovie extends Movie {
-  id: number;
-  poster_path: string;
-  vote_average: number;
-}
-
-export interface SearchState {
-  movies: SearchMovie[];
-  status: "idle" | "loading" | "succeeded" | "failed";
-  error: string | null;
-}
+import instance from "../../utils/instance";
+import { SearchMovie } from "../../types/types";
+import { SearchState } from "../../types/types";
 
 export const searchMovies = createAsyncThunk(
   "search/searchMovies",
