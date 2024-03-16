@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <nav>
       <div className="bg-[#EBEAEA] ">
         <div className="container flex items-center justify-between">
-          <div className="text-caros text-bold font-semibold text-[35px] w-[600] md:ml-[60px] input:pl-[20px]  mt-[40px] ">
+          <div className="text-caros text-bold font-semibold text-[35px] w-[600] md:ml-[80px] input:pl-[20px]  mt-[40px] ">
             <Link to="/">
               The <br />
               Movie <br />
