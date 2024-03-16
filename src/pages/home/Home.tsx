@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#EBEAEA] ">
-      <div className="container mx-auto flex flex-col ">
+      <div className="container flex flex-col lg:ml-[80px] input:ml-[20px]  ">
         {loading ? (
           <Loader />
         ) : (
