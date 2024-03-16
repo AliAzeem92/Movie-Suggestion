@@ -21,7 +21,7 @@ const SeasonPoster: React.FC<SeasonPosterProps> = ({
         />
 
         <div
-          className={`absolute top-0 left-0 rounded-[20px] flex items-center space-x-1 p-2 bg-black bg-opacity-75 transition-opacity duration-300 ${
+          className={`absolute top-2 left-2 rounded-[20px] flex items-center space-x-1 p-2 bg-black bg-opacity-75 transition-opacity duration-300 ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         >

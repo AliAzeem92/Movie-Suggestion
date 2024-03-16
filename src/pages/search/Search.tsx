@@ -33,7 +33,7 @@ const Search = () => {
   }, [location.search]);
 
   return (
-    <>
+    <div className="bg-[#EBEAEA]">
       {isLoading ? (
         <Loader />
       ) : (
@@ -66,7 +66,7 @@ const Search = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import PopularMovies from "../../components/home/popularMovies/PopularMovies";
 import Trending from "../../components/home/trending/Trending";
 import PopularReleases from "../../components/home/popularReleases/PopularReleases";
@@ -14,16 +14,18 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="container mx-auto flex flex-col ">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="grid grid-cols-12 gap-4">
-          <PopularMovies />
-          <Trending />
-        </div>
-      )}
-      {loading ? null : <PopularReleases />}
+    <div className="bg-[#EBEAEA] ">
+      <div className="container mx-auto flex flex-col ">
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="grid grid-cols-12 gap-4">
+            <PopularMovies />
+            <Trending />
+          </div>
+        )}
+        {loading ? null : <PopularReleases />}
+      </div>
     </div>
   );
 }

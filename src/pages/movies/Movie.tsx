@@ -13,7 +13,7 @@ export default function Movie() {
   }, []);
 
   return (
-    <>
+    <div className="bg-[#EBEAEA]">
       {loading ? (
         <Loader />
       ) : (
@@ -22,6 +22,6 @@ export default function Movie() {
           <Seasons />
         </>
       )}
-    </>
+    </div>
   );
 }

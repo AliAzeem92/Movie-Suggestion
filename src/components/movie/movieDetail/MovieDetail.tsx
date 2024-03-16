@@ -43,11 +43,11 @@ export default function Detail() {
 
   return (
     <>
-      <div className="container p-4 ">
+      <div className="container lg:ml-[80px] input:ml-[20px] ">
         <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
           {movieData ? (
             <div className="col-span sm:w-full">
-              <p className="font-bold text-4xl mt-[43px] ">
+              <p className="font-bold text-4xl mt-[26px] ">
                 {movieData.original_title}
               </p>
             </div>
@@ -77,13 +77,13 @@ export default function Detail() {
             <div className="grid md:grid-cols-2 sm:grid-cols-1  z-10 md:static absolute gap-5">
               <div className="md:w-[196px] w-[98px] relative md:top-0 md:left-0 top-[55px] left-8">
                 <img
-                  className="lg:w-[196px] lg:h-[291px] sm:w-[98px] sm:h-[146px] md:w-[196px] md:h-[98px] rounded-[20px]"
+                  className="lg:w-[196px] lg:h-[291px] sm:w-[98px] sm:h-[146px] md:w-[196px] md:h-[98px] input:mt-[15px] rounded-[20px]"
                   src={`https://image.tmdb.org/t/p/original/${movieData.poster_path}`}
                   alt="Movie Poster"
                 />
               </div>
-              <div className="w-[500] my-1 relative md:top-0 md:left-0 top-16 ">
-                <div className="flex flex-row text-[18px] justify-start  content-center text-center ">
+              <div className="relative lg:mt-[31px] input:mt-[61px] ">
+                <div className="flex flex-row text-[18px] justify-start text-center lg:ml-[-110px] ">
                   <span className="rounded-full w-[88px] font-roboto border-[1px] text-[18px] border-black font-medium leading-[21px] border-solid  h-[33px]  py-1.5 me-2.5">
                     Action
                   </span>
@@ -91,22 +91,22 @@ export default function Detail() {
                     Sci-Fr
                   </span>
                 </div>
-                <p className="font-medium text-[18px] text-wrap w-auto mt-[19px] ">
+                <p className="font-medium text-[18px] text-wrap w-auto mt-[19px] lg:ml-[-110px] ">
                   {movieData.overview.slice(0, 300)}
                 </p>
-                <h3 className="text-[18px] font-normal font-roboto">
+                <h3 className="text-[18px] font-bold font-roboto lg:ml-[-110px] ">
                   IMDB Rating
                 </h3>
-                <span className="text-xl">
+                <span className="text-xl lg:ml-[-110px] ">
                   ⭐{Math.round(movieData.vote_average)}
                 </span>{" "}
                 <span>/10</span>
               </div>
             </div>
             <div className="grid grid-cols-1 md:static relative ">
-              <div className="mx-4 ">
+              <div className="input:mr-[20px] ">
                 <img
-                  className="sm:w-[98px] sm:h-[146px] lg:w-[521px] lg:h-[291px] md:w-full rounded-[20px]"
+                  className="sm:h-[146px] lg:w-[521px] lg:h-[291px] rounded-[20px] lg:ml-[100px]  "
                   src={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
                   alt="Movie Scene"
                 />
